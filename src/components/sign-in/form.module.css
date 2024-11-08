@@ -1,0 +1,25 @@
+.signInForm {
+  width: 100%;
+}
+
+.inputWrapper {
+  padding: 10px 0;
+}
+
+.signInOptions {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.signInButtonWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.signInButton {
+  width: 100%;
+}
