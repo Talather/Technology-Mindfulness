@@ -4,13 +4,16 @@
 
 .inputWrapper {
   padding: 10px 0;
+   height: 90px;
+
+  /* background-color: aqua; */
 }
 
 .signInOptions {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .signInButtonWrapper {

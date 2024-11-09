@@ -1,17 +1,20 @@
 // 'use client';
 
 // import { signIn } from '@/lib/actions/auth';
-import { Button, Checkbox, Input, Link } from '@nextui-org/react';
+import { Button, Input,  } from '@nextui-org/react';
 // import img from 'next/img';
 import { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import styles from './form.module.css';
+import { useNavigate } from "react-router-dom"
 
 export default function SignInFormComponent() {
-  const { control, formState: { errors, isSubmitting }, handleSubmit, register } = useForm();
+  const {  formState: { errors, isSubmitting }, handleSubmit, register } = useForm();
   const [state, setState] = useState({});
-
+  const navigate = useNavigate()
+  
   const onSubmit = async (formData) => {
+     navigate("/video")
     setState({});
     const response = await signIn({}, formData);
     if (!response) {
@@ -30,13 +33,13 @@ export default function SignInFormComponent() {
       <div className={styles.inputWrapper}>
         <Input
           //   endContent={<img alt={'email icon'} height={20} radius={'none'} src={'/icons/email.svg'} width={20} />}
-          errorMessage={errors.email && "Please enter your Name"}
-          isInvalid={!!errors.email}
+          errorMessage={errors.name && "Please enter your Name"}
+          isInvalid={!!errors.name}
           label={"Student Name"}
           labelPlacement={"outside"}
           placeholder={"Enter your Name"}
           radius={"sm"}
-          {...register("email", { required: true })}
+          {...register("name", { required: true })}
           type={"text"}
           variant={"bordered"}
         />
@@ -44,13 +47,13 @@ export default function SignInFormComponent() {
       <div className={styles.inputWrapper}>
         <Input
           //   endContent={<img alt={'email icon'} height={20} radius={'none'} src={'/icons/password.svg'} width={20} />}
-          errorMessage={errors.password && "Please enter your Grade"}
-          isInvalid={!!errors.password}
+          errorMessage={errors.grade && "Please enter your Grade"}
+          isInvalid={!!errors.grade}
           label={"Student Grade"}
           labelPlacement={"outside"}
           placeholder={"Enter your Grade"}
           radius={"sm"}
-          {...register("Grade", { required: true })}
+          {...register("grade", { required: true })}
           type={"text"}
           variant={"bordered"}
         />
@@ -58,13 +61,13 @@ export default function SignInFormComponent() {
       <div className={styles.inputWrapper}>
         <Input
           //   endContent={<img alt={'email icon'} height={20} radius={'none'} src={'/icons/password.svg'} width={20} />}
-          errorMessage={errors.password && "Please enter your School Name"}
-          isInvalid={!!errors.password}
+          errorMessage={errors.SchoolName && "Please enter your School Name"}
+          isInvalid={!!errors.SchoolName}
           label={"Student School Name"}
           labelPlacement={"outside"}
           placeholder={"Enter your School Name"}
           radius={"sm"}
-          {...register("School Name", { required: true })}
+          {...register("SchoolName", { required: true })}
           type={"text"}
           variant={"bordered"}
         />
@@ -83,6 +86,9 @@ export default function SignInFormComponent() {
           isLoading={isSubmitting}
           radius={"sm"}
           type={"submit"}
+          onClick={() => {
+            // navigate(generateLink);
+          }}
         >
           Proceed To Video
         </Button>
