@@ -3,7 +3,7 @@ import myImage from "../../assets/logo-profile.png"
 import styles from "./main.module.css"
 
 export default function Main() {
-    console.log("kmala harris")
+  console.log("kmala harris")
   return (
     <div className={styles.signIn}>
       <div className={styles.container}>
@@ -14,15 +14,10 @@ export default function Main() {
         <div className={styles.signInWrapper}>
           <div className={styles.signInLeft}>
             <h1>Enter The Following Details</h1>
-            {/* <p>By signing in, you are agreeing to our Terms and Privacy Policy</p> */}
             <div className={styles.signInFormWrapper}>
               <SignInFormComponent />
             </div>
           </div>
-          {/* <div className={styles.signInRight}>
-          <img src={myImage} alt="My Image" 
-          />
-        </div> */}
         </div>
       </div>
     </div>

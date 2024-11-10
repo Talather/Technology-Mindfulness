@@ -1,38 +1,41 @@
 // 'use client';
 
 // import { signIn } from '@/lib/actions/auth';
-import { Button, Input,  } from '@nextui-org/react';
+import { Button, Input } from "@nextui-org/react"
 // import img from 'next/img';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import styles from './form.module.css';
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import styles from "./form.module.css"
 import { useNavigate } from "react-router-dom"
 
 export default function SignInFormComponent() {
-  const {  formState: { errors, isSubmitting }, handleSubmit, register } = useForm();
-  const [state, setState] = useState({});
+  const {
+    formState: { errors, isSubmitting },
+    handleSubmit,
+    register,
+  } = useForm()
+  const [state, setState] = useState({})
   const navigate = useNavigate()
-  
+
   const onSubmit = async (formData) => {
-     navigate("/video")
-    setState({});
-    const response = await signIn({}, formData);
+    navigate("/video")
+    setState({})
+    const response = await signIn({}, formData)
     if (!response) {
-      setState({ success: true });
+      setState({ success: true })
     } else {
-      setState(response);
+      setState(response)
     }
-    };
-    function signIn() {
-        console.log("hijra")
-    }
+  }
+  function signIn() {
+    console.log("hijra")
+  }
 
   return (
     <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
       {state?.error && <div className="error">{state.error}</div>}
       <div className={styles.inputWrapper}>
         <Input
-          //   endContent={<img alt={'email icon'} height={20} radius={'none'} src={'/icons/email.svg'} width={20} />}
           errorMessage={errors.name && "Please enter your Name"}
           isInvalid={!!errors.name}
           label={"Student Name"}
@@ -72,12 +75,7 @@ export default function SignInFormComponent() {
           variant={"bordered"}
         />
       </div>
-      <div className={styles.signInOptions}>
-        {/* <Controller control={control} name={'remember'} render={({ field: { onChange, value } }) => (
-          <Checkbox isSelected={value} onChange={onChange}>Remember Me</Checkbox>
-        )} /> */}
-        {/* <Link href={'/reset-password'}>Forgot Password?</Link> */}
-      </div>
+      <div className={styles.signInOptions}></div>
       <div className={styles.signInButtonWrapper}>
         <Button
           className={styles.signInButton}
@@ -86,9 +84,7 @@ export default function SignInFormComponent() {
           isLoading={isSubmitting}
           radius={"sm"}
           type={"submit"}
-          onClick={() => {
-            // navigate(generateLink);
-          }}
+          onClick={() => {}}
         >
           Proceed To Video
         </Button>

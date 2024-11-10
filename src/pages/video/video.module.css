@@ -4,14 +4,14 @@
   width: 100vw;
    align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 .container{
    background-color: #ffffff;
   height: 85vh;
   width: 80vw;
  
-  /* margin: 20px 20px 20px 20px; */
+  margin: 0px 0px 0px 100px;
 }
 
 .logoWrapper {
@@ -102,3 +102,36 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.signInButtonWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.signInButton {
+  width: 100%;
+}
+
