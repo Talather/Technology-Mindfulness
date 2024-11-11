@@ -158,7 +158,7 @@ export default function Quiz() {
                 </div>
               </div>
             </div>
-            <div className={styles.footer}>
+            {/* <div className={styles.footer}>
               {state.error && <div className="error">{state.error}</div>}
               <div className={styles.footerInner}>
                 <Button color="primary" isLoading={isSubmitting} type="submit">
@@ -172,7 +172,7 @@ export default function Quiz() {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </form>
       )}

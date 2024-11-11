@@ -1,7 +1,8 @@
 .audit {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* background-color: brown; */
+  height: 85vh;
 }
 
 .topBar {
