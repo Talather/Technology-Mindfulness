@@ -62,7 +62,7 @@ export default function Quiz() {
   const handleSkip = () => {
     setCurrentIndex((currentIndex + 1) % questions.length)
   }
- async function createCompletedSurvey(){}
+  async function createCompletedSurvey() { }
   const onSubmit = async (formData) => {
     setState({})
     try {
@@ -104,9 +104,9 @@ export default function Quiz() {
               <p className={styles.title}>Quiz Derived From Video</p>
             </div>
             <div className={styles.content}>
-              <div className={styles.contentInner}>
+              <div className={`${styles.contentInner}`}>
                 <div
-                  className={styles.question}
+                  className={`${styles.question} border border-black p-4`}
                   key={questions[currentIndex]._id}
                 >
                   <Controller
@@ -132,31 +132,29 @@ export default function Quiz() {
                   />
                 </div>
 
-                <div className="flex flex-col h-52 w-32  bg-black">
-                  <div className="">
-                    <Button
-                      color="primary"
-                      isLoading={isSubmitting}
-                      type="submit"
-                      onClick={() => {
-                        handlePrevious()
-                      }}
-                    >
-                      Previous
-                    </Button>
-                  </div>
-                  <div>
-                    <Button
-                      color="primary"
-                      isLoading={isSubmitting}
-                      type="submit"
-                      onClick={() => {
-                        handleNext()
-                      }}
-                    >
-                      Next
-                    </Button>
-                  </div>
+                <div className={`${styles.buttons} `}>
+                  <Button
+                    color="primary"
+                    className="w-full"
+                    isLoading={isSubmitting}
+                    type="submit"
+                    onClick={() => {
+                      handlePrevious()
+                    }}
+                  >
+                    Previous
+                  </Button>
+                  <Button
+                    color="primary"
+                    className="w-full"
+                    isLoading={isSubmitting}
+                    type="submit"
+                    onClick={() => {
+                      handleNext()
+                    }}
+                  >
+                    Next
+                  </Button>
                 </div>
               </div>
             </div>
