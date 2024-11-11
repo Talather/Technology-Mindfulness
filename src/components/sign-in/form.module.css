@@ -3,9 +3,9 @@
 }
 
 .inputWrapper {
-  padding: 10px 0;
-   height: 90px;
-
+  padding: 5px 0;
+   height: 80px;
+  margin-bottom: 5px;
   /* background-color: aqua; */
 }
 
@@ -13,14 +13,15 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 10px;
+  
 }
 
 .signInButtonWrapper {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .signInButton {

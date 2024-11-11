@@ -1,8 +1,4 @@
-// 'use client';
-
-// import { signIn } from '@/lib/actions/auth';
 import { Button, Input } from "@nextui-org/react"
-// import img from 'next/img';
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import styles from "./form.module.css"
@@ -43,6 +39,19 @@ export default function SignInFormComponent() {
           placeholder={"Enter your Name"}
           radius={"sm"}
           {...register("name", { required: true })}
+          type={"text"}
+          variant={"bordered"}
+        />
+      </div>
+      <div className={styles.inputWrapper}>
+        <Input
+          errorMessage={errors.email && "Please enter your Email"}
+          isInvalid={!!errors.email}
+          label={"Student Email"}
+          labelPlacement={"outside"}
+          placeholder={"Enter your Email"}
+          radius={"sm"}
+          {...register("email", { required: true })}
           type={"text"}
           variant={"bordered"}
         />

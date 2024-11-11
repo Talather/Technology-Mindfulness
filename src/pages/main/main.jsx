@@ -3,7 +3,7 @@ import myImage from "../../assets/logo-profile.png"
 import styles from "./main.module.css"
 
 export default function Main() {
-  console.log("kmala harris")
+  // console.log("kmala harris")
   return (
     <div className={styles.signIn}>
       <div className={styles.container}>
