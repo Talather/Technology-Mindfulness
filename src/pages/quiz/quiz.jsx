@@ -233,7 +233,7 @@ export default function Quiz() {
             <div className={styles.footer}>
               {state.error && <div className="error">{state.error}</div>}
               <div className={styles.footerInner}>
-                <Button color="primary" isLoading={isSubmitting} type="submit">
+                <Button color="primary" isDisabled={ currentIndex+1 != questions.length } isLoading={isSubmitting} type="submit">
                   Submit
                 </Button>
                 <div className={styles.progress}>

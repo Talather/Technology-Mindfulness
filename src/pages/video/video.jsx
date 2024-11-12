@@ -19,23 +19,29 @@ export default function Video() {
         mass: 1, // Optional: Control the mass for a more natural feel
         duration: 0.75, // Duration for the animation in seconds
       }}
-      // style={{
-      //   height: "100vh",
-      //   display: "flex",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      //   backgroundColor: "red",
-      // }}
+      style={{
+        // height: "100vh",
+        // display: "flex",
+        // justifyContent: "center",
+        // alignItems: "center",
+        // backgroundColor: "red",
+        // borderRadius:"20px"
+        
+      }}
     >
       <div className={styles.signIn}>
         {/* <div className={styles.container}> */}
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-            controls="true"
-            playing="true"
-            height={"85vh"}
-            width="100%"
-          />
+        <ReactPlayer
+          
+          url=" https://www.youtube.com/watch?v=ikzY4NQeR1U"
+          controls="true"
+          playing="true"
+          height={"85vh"}
+          width="100%"
+
+          // style={{borderRadius:"10px"}}
+
+        />
         {/* </div> */}
 
         <div className={styles.quizNaviagtion}>
