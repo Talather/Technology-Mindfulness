@@ -1,18 +1,19 @@
 .signIn {
-
-  align-items: center;
+  
+   align-items: center;
   display: flex;
   justify-content: center;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
 
 }
-
-.container {
-
+.container{
 
 
 
+
+
+   /* background-color: #716060; */
   /* height: 85vh;
   width: 80vw; */
   /* background-color: #8b0d0d; */
@@ -36,7 +37,6 @@
 }
 
 .signInWrapper {
-  /* border : 2px solid black; */
   display: flex;
 }
 
@@ -56,7 +56,6 @@
 }
 
 .signInFormWrapper {
-  /* border : 2px solid red; */
   margin-top: 30px;
   max-width: 320px;
   width: 100%;
