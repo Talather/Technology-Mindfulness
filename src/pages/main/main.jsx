@@ -13,7 +13,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore"
 export default function Main() {
   const firebaseConfig = {
     // Your Firebase configuration object
-    apiKey: "AIzaSyDYBtQUNZXdcoQr9G_K5R2SDW_ZPqeuvQg",
+    
   }
 
   // const app = initializeApp(firebaseConfig)
