@@ -13,23 +13,26 @@
 }
 
 .topBar {
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   background-color: var(--primary-color);
   border: 1px solid var(--border-color);
   display: flex;
-  gap: 20px;
+  /* gap: 20px; */
   height: 90px;
+  width: auto;
   padding: 10px;
 }
 
 .title {
   color: var(--primary-foreground);
-  font-size: 24px;
+  font-size: 30px;
   margin-top: 12px;
-  overflow: hidden;
+  /* overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  width: calc(100vw - 200px);
+  white-space: nowrap;*/
+  /* width: 30vw;  */
 }
 
 .content {
@@ -94,7 +97,7 @@
   border-top: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .footerInner {

@@ -13,6 +13,9 @@ export default function Quiz() {
     formState: { isSubmitting },
     getValues,
     handleSubmit,
+    // getValues,
+    // handleSubmit,
+    // setValue,
   } = useForm({ mode: "onChange" })
 
   const [progress, setProgress] = useState(0)
@@ -20,36 +23,36 @@ export default function Quiz() {
   const questions = [
     {
       _id: 1,
-      name: "Is he a good person?",
+      name: "What is the largest country in the world by land area?",
       answers: [
-        { _id: "1", name: "Yes" },
-        { _id: "2", name: "No" },
-        { _id: "3", name: "Definitely not" },
-        { _id: "4", name: "No doubt" },
-      ],
-      correctAnswerId: "1",
-    },
-    {
-      _id: 2,
-      name: "Will he get a girl in the future?",
-      answers: [
-        { _id: "1", name: "Yes" },
-        { _id: "2", name: "No" },
-        { _id: "3", name: "Definitely not" },
-        { _id: "4", name: "No doubt" },
+        { _id: "1", name: "China" },
+        { _id: "2", name: "Russia" },
+        { _id: "3", name: "Pakistan" },
+        { _id: "4", name: "USA" },
       ],
       correctAnswerId: "2",
     },
     {
-      _id: 3,
-      name: "Will he become rich?",
+      _id: 2,
+      name: "Who painted the Mona Lisa?",
       answers: [
-        { _id: "1", name: "Yes" },
-        { _id: "2", name: "No" },
-        { _id: "3", name: "Definitely not" },
-        { _id: "4", name: "No doubt" },
+        { _id: "1", name: " Pablo Picasso" },
+        { _id: "2", name: "Vincent van Gogh" },
+        { _id: "3", name: "Leonardo da Vinci" },
+        { _id: "4", name: " Michelangelo" },
       ],
-      correctAnswerId: "1",
+      correctAnswerId: "3",
+    },
+    {
+      _id: 3,
+      name: "Which planet is known as the Red Planet?",
+      answers: [
+        { _id: "1", name: "Earth" },
+        { _id: "2", name: "Mars" },
+        { _id: "3", name: "Venus" },
+        { _id: "4", name: "Jupiter" },
+      ],
+      correctAnswerId: "2",
     },
   ]
 
@@ -146,15 +149,27 @@ export default function Quiz() {
       {!completed && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.audit}>
+
+
+
+
+
+
             <div className={styles.topBar}>
-              <img
+              {/* <img
                 alt="Inspire Logo"
                 height={74}
                 src="/logo-green.png"
                 width={130}
-              />
+              /> */}
               <p className={styles.title}>Quiz Derived From Video</p>
             </div>
+
+
+
+
+
+
             <div className={styles.content}>
               <div className={`${styles.contentInner}`}>
                 <div className="slider-container">
@@ -171,7 +186,8 @@ export default function Quiz() {
                         <Controller
                           control={control}
                           name={`answer${questions[currentIndex]._id}`}
-                          render={({ field: { onChange } }) => (
+                          defaultValue={getValues(`answer${questions[currentIndex]._id}`)}
+                          render={({ field: { onChange, value } }) => (
                             <RadioGroup
                               label={
                                 <p>
@@ -179,7 +195,16 @@ export default function Quiz() {
                                   {questions[currentIndex].name}
                                 </p>
                               }
-                              onChange={onChange}
+                              // onChange={onChange}
+                              onChange={(val) => {
+                                onChange(val)
+                                // setValue(
+                                //   `answer${questions[currentIndex]._id}`,
+                                //   val
+                                // )
+                                updateProgress()
+                              }}
+                              value={value}
                             >
                               {questions[currentIndex].answers.map((answer) => (
                                 <Radio
@@ -219,13 +244,14 @@ export default function Quiz() {
                     color="primary"
                     className="w-full"
                     isLoading={isSubmitting}
-                    isDisabled={currentIndex === questions.length - 1}
-                    // type="submit"
+                    // isDisabled={currentIndex === questions.length - 1}
+                    type={currentIndex === questions.length - 1 ? "Submit" : "" }
+
                     onClick={() => {
                       handleNext()
                     }}
                   >
-                    Next
+                    {currentIndex === questions.length - 1 ? "Submit" : "Next"}
                   </Button>
                 </div>
               </div>
@@ -233,9 +259,14 @@ export default function Quiz() {
             <div className={styles.footer}>
               {state.error && <div className="error">{state.error}</div>}
               <div className={styles.footerInner}>
-                <Button color="primary" isDisabled={ currentIndex+1 != questions.length } isLoading={isSubmitting} type="submit">
+                {/* <Button
+                  color="primary"
+                  isDisabled={currentIndex + 1 != questions.length}
+                  isLoading={isSubmitting}
+                  type="submit"
+                >
                   Submit
-                </Button>
+                </Button> */}
                 <div className={styles.progress}>
                   <Progress
                     aria-label="Survey Progress"
