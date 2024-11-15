@@ -1,11 +1,11 @@
-import styles from "./video.module.css"
+import styles from "./video.module.css";
 
-import ReactPlayer from "react-player"
+import ReactPlayer from "react-player";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function Video() {
-  console.log("kmala harris")
+  console.log("kmala harris");
 
   return (
     <motion.div
@@ -19,20 +19,20 @@ export default function Video() {
         mass: 1, // Optional: Control the mass for a more natural feel
         duration: 0.75, // Duration for the animation in seconds
       }}
-      style={{
-        // height: "100vh",
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "center",
-        // backgroundColor: "red",
-        // borderRadius:"20px"
-        
-      }}
+      style={
+        {
+          // height: "100vh",
+          // display: "flex",
+          // justifyContent: "center",
+          // alignItems: "center",
+          // backgroundColor: "red",
+          // borderRadius:"20px"
+        }
+      }
     >
       <div className={styles.signIn}>
         {/* <div className={styles.container}> */}
         <ReactPlayer
-          
           url=" https://www.youtube.com/watch?v=ikzY4NQeR1U"
           controls="true"
           playing="true"
@@ -40,16 +40,19 @@ export default function Video() {
           width="100%"
 
           // style={{borderRadius:"10px"}}
-
         />
         {/* </div> */}
 
         <div className={styles.quizNaviagtion}>
           <a href="/quiz">
-            <img src="public/new.svg" alt="Example Image" width={50} />
+            <img
+              src="https://w7.pngwing.com/pngs/394/1024/png-transparent-arrow-arrows-forward-navigation-next-pointer-right-arrow-set-icon-thumbnail.png"
+              alt="Example Image"
+              width={50}
+            />
           </a>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
