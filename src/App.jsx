@@ -10,15 +10,15 @@ function App() {
     <>
       {/* {!isAuthPage && <Navbar />}
       {!isAuthPage && <Sidebar />} */}
-      <BrowserRouter>
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/video" element={<Video />} />
             <Route path="/quiz" element={<Quiz />} />
           </Routes>
-        </AnimatePresence>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AnimatePresence>
     </>
   );
 }
