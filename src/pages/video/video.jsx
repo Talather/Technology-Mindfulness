@@ -3,10 +3,9 @@ import styles from "./video.module.css";
 import ReactPlayer from "react-player";
 
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 export default function Video() {
-  console.log("kmala harris");
-
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ x: "100%" }} // Start off-screen to the right
@@ -44,13 +43,20 @@ export default function Video() {
         {/* </div> */}
 
         <div className={styles.quizNaviagtion}>
-          <a href="/quiz">
+          <button
+            onClick={() => {
+              navigate("/quiz");
+            }}
+            style={{
+              cursor: "pointer",
+            }}
+          >
             <img
               src="https://w7.pngwing.com/pngs/394/1024/png-transparent-arrow-arrows-forward-navigation-next-pointer-right-arrow-set-icon-thumbnail.png"
               alt="Example Image"
               width={50}
             />
-          </a>
+          </button>
         </div>
       </div>
     </motion.div>
