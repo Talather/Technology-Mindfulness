@@ -47,6 +47,9 @@ export default function Video() {
             onClick={() => {
               navigate("/quiz");
             }}
+            style={{
+              cursor: "pointer",
+            }}
           >
             <img
               src="https://w7.pngwing.com/pngs/394/1024/png-transparent-arrow-arrows-forward-navigation-next-pointer-right-arrow-set-icon-thumbnail.png"
