@@ -6,8 +6,6 @@ import { Controller, useForm } from "react-hook-form"
 import styles from "./quiz.module.css"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import "./slideComponent.css"
-import { AnimatePresence } from "framer-motion"
-
 export default function Quiz() {
   const [completed, setCompleted] = useState(false)
   const {
@@ -60,7 +58,7 @@ export default function Quiz() {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [correctAnswerScore, setCorrectAnswerScore] = useState(0)
-
+  
   const handleNext = () => {
     if (currentIndex < questions.length - 1) setCurrentIndex(currentIndex + 1)
   }
@@ -77,46 +75,86 @@ export default function Quiz() {
     let correctAnswers = 0
 
     const k = Object.keys(formData)
+    console.log("chikna", k)
 
     for (const key in k) {
+      // console.log("key of formdata:", key)
+      // console.log("formData[k[key]]:", formData[k[key]])
+      // console.log(
+      //   "questions[key].correctAnswerId:",
+      //   questions[key].correctAnswerId
+      // )
       if (formData[k[key]] === questions[key].correctAnswerId) {
+        console.log("harami", key)
         correctAnswers = correctAnswers + 1
       }
     }
     return correctAnswers
   }
 
+  
+
   const onSubmit = async (formData) => {
     const correctAnswerScore = evaluateQuiz(formData)
 
+    console.log("zalim", correctAnswerScore)
     setCorrectAnswerScore(correctAnswerScore)
     setState({})
+   
+      // const response = await createCompletedSurvey({}, formData)
+      setState({success:true})
+    
+    
+    
+    
+    
+    
+    
 
-    // const response = await createCompletedSurvey({}, formData)
-    setState({ success: true })
+
+
+    
   }
 
   const updateProgress = () => {
+    console.log("vilvvassi")
     const values = Object.values(getValues())
     const completedAnswers = values.filter((v) => v)
     setProgress((completedAnswers.length / questions.length) * 100)
   }
 
-  useEffect(() => {
-    updateProgress()
-  }, [currentIndex])
+
+
+
+
 
   useEffect(() => {
+    updateProgress()
+    console.log("maria", currentIndex)
+   
+  }, [currentIndex])
+
+
+
+  useEffect(() => {
+    console.log("churail",state)
     if (state.success) {
+      console.log("mulali", state)
       setCompleted(true)
     }
   }, [state])
 
   return (
-    <AnimatePresence>
+    <>
       {!completed && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.audit}>
+
+
+
+
+
+
             <div className={styles.topBar}>
               {/* <img
                 alt="Inspire Logo"
@@ -126,6 +164,11 @@ export default function Quiz() {
               /> */}
               <p className={styles.title}>Quiz Derived From Video</p>
             </div>
+
+
+
+
+
 
             <div className={styles.content}>
               <div className={`${styles.contentInner}`}>
@@ -143,9 +186,7 @@ export default function Quiz() {
                         <Controller
                           control={control}
                           name={`answer${questions[currentIndex]._id}`}
-                          defaultValue={getValues(
-                            `answer${questions[currentIndex]._id}`
-                          )}
+                          defaultValue={getValues(`answer${questions[currentIndex]._id}`)}
                           render={({ field: { onChange, value } }) => (
                             <RadioGroup
                               label={
@@ -204,7 +245,8 @@ export default function Quiz() {
                     className="w-full"
                     isLoading={isSubmitting}
                     // isDisabled={currentIndex === questions.length - 1}
-                    type={currentIndex === questions.length - 1 ? "Submit" : ""}
+                    type={currentIndex === questions.length - 1 ? "Submit" : "" }
+
                     onClick={() => {
                       handleNext()
                     }}
@@ -241,12 +283,7 @@ export default function Quiz() {
       {completed && (
         <div className={styles.completed}>
           <div className={""} style={{ marginBottom: "6px" }}>
-            <img
-              src={
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9mGX9W3pxxwM5WOzVGvBVZ_UrFagSFPbmQ&s"
-              }
-              width={100}
-            ></img>
+            <img src={"/public/res.svg"} width={100}></img>
           </div>
 
           <h1>Quiz Completed!</h1>
@@ -257,6 +294,6 @@ export default function Quiz() {
           {/* <h1 className={styles.completedFooter}>Your INSPIRE® Team</h1> */}
         </div>
       )}
-    </AnimatePresence>
+    </>
   )
 }

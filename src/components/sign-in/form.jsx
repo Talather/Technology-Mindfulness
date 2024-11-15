@@ -3,7 +3,6 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import styles from "./form.module.css"
 import { useNavigate } from "react-router-dom"
-import { createUser } from "../../firebase"
 
 export default function SignInFormComponent() {
   const {
@@ -15,23 +14,17 @@ export default function SignInFormComponent() {
   const navigate = useNavigate()
 
   const onSubmit = async (formData) => {
+    navigate("/video")
     setState({})
-
-    const userCreate = {
-      name: formData.name,
-      email: formData.email,
-      grade: formData.grade,
-      schoolName: formData.SchoolName,
-      role: "student",
-    }
-    const response = await createUser({ userCreate })
-
+    const response = await signIn({}, formData)
     if (!response) {
       setState({ success: true })
     } else {
       setState(response)
     }
-    navigate(`/video?grade=${formData.grade}`)
+  }
+  function signIn() {
+    console.log("hijra")
   }
 
   return (
@@ -73,7 +66,7 @@ export default function SignInFormComponent() {
           placeholder={"Enter your Grade"}
           radius={"sm"}
           {...register("grade", { required: true })}
-          type={"number"}
+          type={"text"}
           variant={"bordered"}
         />
       </div>
