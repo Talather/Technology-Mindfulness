@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Button, Progress, Radio, RadioGroup } from "@nextui-org/react";
-import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import styles from "./quiz.module.css";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "./slideComponent.css";
-import { AnimatePresence } from "framer-motion";
+import { Button, Progress, Radio, RadioGroup } from "@nextui-org/react"
+import { useEffect, useState } from "react"
+import { Controller, useForm } from "react-hook-form"
+import styles from "./quiz.module.css"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import "./slideComponent.css"
+import { AnimatePresence } from "framer-motion"
 
 export default function Quiz() {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(false)
   const {
     control,
     formState: { isSubmitting },
@@ -18,10 +18,10 @@ export default function Quiz() {
     // getValues,
     // handleSubmit,
     // setValue,
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onChange" })
 
-  const [progress, setProgress] = useState(0);
-  const [state, setState] = useState({});
+  const [progress, setProgress] = useState(0)
+  const [state, setState] = useState({})
   const questions = [
     {
       _id: 1,
@@ -56,74 +56,61 @@ export default function Quiz() {
       ],
       correctAnswerId: "2",
     },
-  ];
+  ]
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [correctAnswerScore, setCorrectAnswerScore] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [correctAnswerScore, setCorrectAnswerScore] = useState(0)
 
   const handleNext = () => {
-    if (currentIndex < questions.length - 1) setCurrentIndex(currentIndex + 1);
-  };
+    if (currentIndex < questions.length - 1) setCurrentIndex(currentIndex + 1)
+  }
 
   const handlePrevious = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
-  };
+    if (currentIndex > 0) setCurrentIndex(currentIndex - 1)
+  }
 
   // const handleSkip = () => {
   //   setCurrentIndex((currentIndex + 1) % questions.length)
   // }
 
   function evaluateQuiz(formData) {
-    let correctAnswers = 0;
+    let correctAnswers = 0
 
-    const k = Object.keys(formData);
-    console.log("chikna", k);
+    const k = Object.keys(formData)
 
     for (const key in k) {
-      // console.log("key of formdata:", key)
-      // console.log("formData[k[key]]:", formData[k[key]])
-      // console.log(
-      //   "questions[key].correctAnswerId:",
-      //   questions[key].correctAnswerId
-      // )
       if (formData[k[key]] === questions[key].correctAnswerId) {
-        console.log("harami", key);
-        correctAnswers = correctAnswers + 1;
+        correctAnswers = correctAnswers + 1
       }
     }
-    return correctAnswers;
+    return correctAnswers
   }
 
   const onSubmit = async (formData) => {
-    const correctAnswerScore = evaluateQuiz(formData);
+    const correctAnswerScore = evaluateQuiz(formData)
 
-    console.log("zalim", correctAnswerScore);
-    setCorrectAnswerScore(correctAnswerScore);
-    setState({});
+    setCorrectAnswerScore(correctAnswerScore)
+    setState({})
 
     // const response = await createCompletedSurvey({}, formData)
-    setState({ success: true });
-  };
+    setState({ success: true })
+  }
 
   const updateProgress = () => {
-    console.log("vilvvassi");
-    const values = Object.values(getValues());
-    const completedAnswers = values.filter((v) => v);
-    setProgress((completedAnswers.length / questions.length) * 100);
-  };
+    const values = Object.values(getValues())
+    const completedAnswers = values.filter((v) => v)
+    setProgress((completedAnswers.length / questions.length) * 100)
+  }
 
   useEffect(() => {
-    updateProgress();
-    console.log("maria", currentIndex);
-  }, [currentIndex]);
+    updateProgress()
+  }, [currentIndex])
 
   useEffect(() => {
-    console.log("churail", state);
     if (state.success) {
-      console.log("mulali", state);
-      setCompleted(true);
+      setCompleted(true)
     }
-  }, [state]);
+  }, [state])
 
   return (
     <AnimatePresence>
@@ -169,12 +156,12 @@ export default function Quiz() {
                               }
                               // onChange={onChange}
                               onChange={(val) => {
-                                onChange(val);
+                                onChange(val)
                                 // setValue(
                                 //   `answer${questions[currentIndex]._id}`,
                                 //   val
                                 // )
-                                updateProgress();
+                                updateProgress()
                               }}
                               value={value}
                             >
@@ -183,7 +170,7 @@ export default function Quiz() {
                                   onClick={() => {
                                     currentIndex + 1 === questions.length
                                       ? setProgress(100)
-                                      : null;
+                                      : null
                                   }}
                                   key={answer._id}
                                   value={answer._id}
@@ -207,7 +194,7 @@ export default function Quiz() {
                     isLoading={isSubmitting}
                     // type="submit"
                     onClick={() => {
-                      handlePrevious();
+                      handlePrevious()
                     }}
                   >
                     Previous
@@ -219,7 +206,7 @@ export default function Quiz() {
                     // isDisabled={currentIndex === questions.length - 1}
                     type={currentIndex === questions.length - 1 ? "Submit" : ""}
                     onClick={() => {
-                      handleNext();
+                      handleNext()
                     }}
                   >
                     {currentIndex === questions.length - 1 ? "Submit" : "Next"}
@@ -271,5 +258,5 @@ export default function Quiz() {
         </div>
       )}
     </AnimatePresence>
-  );
+  )
 }
