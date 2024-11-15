@@ -43,8 +43,7 @@ export default function Video() {
         {/* </div> */}
 
         <div className={styles.quizNaviagtion}>
-          <a
-            href=""
+          <div
             onClick={() => {
               navigate("/quiz");
             }}
@@ -54,7 +53,7 @@ export default function Video() {
               alt="Example Image"
               width={50}
             />
-          </a>
+          </div>
         </div>
       </div>
     </motion.div>
