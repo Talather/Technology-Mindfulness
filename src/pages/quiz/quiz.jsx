@@ -254,7 +254,12 @@ export default function Quiz() {
       {completed && (
         <div className={styles.completed}>
           <div className={""} style={{ marginBottom: "6px" }}>
-            <img src={"/public/res.svg"} width={100}></img>
+            <img
+              src={
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9mGX9W3pxxwM5WOzVGvBVZ_UrFagSFPbmQ&s"
+              }
+              width={100}
+            ></img>
           </div>
 
           <h1>Quiz Completed!</h1>
